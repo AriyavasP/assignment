@@ -4,27 +4,21 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
-  ManyToOne,
 } from 'typeorm';
 import { Studio } from './studio.entity';
-import { Anime } from './anime.entity';
 
 @Entity()
-export class Chapter {
+export class Anime {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ length: 255 })
   name: string;
 
+  @Column()
+  year: number;
+
   @OneToOne(() => Studio, (studio) => studio.id, { onDelete: 'SET NULL' })
   @JoinColumn()
   studioId: string;
-
-  @ManyToOne(() => Anime, (anime) => anime.id, { onDelete: 'SET NULL' })
-  @JoinColumn()
-  animeId: string;
-
-  @Column()
-  duration: number;
 }

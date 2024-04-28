@@ -9,6 +9,10 @@ import { User } from './entities/user.entity';
 import { ValidatePipe } from './common/validate.pipe';
 import { Chapter } from './entities/chapter.entity';
 import { Studio } from './entities/studio.entity';
+import { ChapterModule } from './app/chapter/chapter.module';
+import { Anime } from './entities/anime.entity';
+import { StudioModule } from './app/studio/studio.module';
+import { AnimeModule } from './app/anime/anime.module';
 
 @Module({
   imports: [
@@ -16,9 +20,12 @@ import { Studio } from './entities/studio.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: './app.sqlite',
-      entities: [User, Studio, Chapter],
+      entities: [User, Studio, Chapter, Anime],
       synchronize: true,
     }),
+    ChapterModule,
+    StudioModule,
+    AnimeModule,
   ],
   controllers: [],
   providers: [

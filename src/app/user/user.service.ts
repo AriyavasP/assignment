@@ -52,7 +52,8 @@ export class UserService {
         return this.data;
       }
       this.data.status = HttpStatus.NO_CONTENT;
-      this.data.res = await this.userRepository.deleteById(id);
+      await this.userRepository.deleteById(id);
+      this.data.res = 'Successful.';
       return this.data;
     } catch (error) {
       throw error;
